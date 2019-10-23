@@ -9,13 +9,16 @@ var indexRouter = require('./routes/index');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
+var apiCatalog = require('./routes/api-catalog');
+
 // database connection
 mongoose.connect('mongodb://admin:admin@ds121588.mlab.com:21588/mean-library', {
-  promiseLibrary: require('bluebird')
+  promiseLibrary: require('bluebird'),
+  useUnifiedTopology: true,
+  useNewUrlParser: true
 }).then(() => console.log('connection successful')).catch((err) => console.error(err));
 
 var app = express();
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +31,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+
+app.use('/api', apiCatalog);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
