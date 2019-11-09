@@ -23,7 +23,7 @@ mongoose.Promise = require('bluebird');
 var apiCatalog = require('./routes/api-catalog');
 
 // database connection
-mongoose.connect('mongodb://admin:admin@ds121588.mlab.com:21588/mean-library', {
+mongoose.connect("mongodb+srv://Friend0fMisery:Kool6767!@buwebdev-cluster-1-sn3vf.mongodb.net/api-gateway?retryWrites=true&w=majority", {
   promiseLibrary: require('bluebird'),
   useUnifiedTopology: true,
   useNewUrlParser: true
